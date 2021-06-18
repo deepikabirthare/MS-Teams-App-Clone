@@ -23,7 +23,7 @@ navigator.mediaDevices.getUserMedia({
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream);
   })
-  
+
   // input value
   let text = $('input');
   // when press enter send message
@@ -93,7 +93,6 @@ function copy(idCopied){
 const scrollToBottom = () => {
   var d = $('.main_chat_window');
   d.scrollTop(d.prop("scrollHeight"));
-  console.log("Hello");
 }
 
 
@@ -137,22 +136,6 @@ const setMuteButton = () => {
     <span>Mute</span>
   `
   document.querySelector('.main_mute_button').innerHTML = html;
-}
-
-var copyButton = document.getElementById('copy-button')
-
-copyButton.addEventListener("click", () =>{
-  copy(ROOM_ID)
-})
-
-function copy(idCopied){
-  var input = document.createElement('input');
-  input.setAttribute('value', idCopied);
-  document.body.appendChild(input);
-  input.select();
-  var result = document.execCommand('copy');
-  document.body.removeChild(input);
-  alert("copied")
 }
 
 const setUnmuteButton = () => {
