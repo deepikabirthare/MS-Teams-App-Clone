@@ -17,8 +17,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/signUp.css" rel="stylesheet">
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="primaryScript.js"></script>
   <script type="text/javascript">
     const monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
@@ -26,6 +29,7 @@
     const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
       "Friday", "Saturday"
     ]
+
     function startTime() {
       var today = new Date();
       var day = weekNames[today.getDay()];
@@ -38,11 +42,14 @@
       m = checkTime(m);
       s = checkTime(s);
       document.getElementById('txt').innerHTML =
-      day + ", "+ date + " " + month + " " + year + " " + h + ":" + m + ":" + s;
+        day + ", " + date + " " + month + " " + year + " " + h + ":" + m + ":" + s;
       var t = setTimeout(startTime, 500);
     }
+
     function checkTime(i) {
-      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      if (i < 10) {
+        i = "0" + i
+      }; // add zero in front of numbers < 10
       return i;
     }
   </script>
@@ -55,21 +62,26 @@
   <div class="bottom-part">
     <main class="Meeting-HomePage">
       <div class="link-to-join">
-          <img class="ms-image" src="images/microsoft.png" alt="" width="72" height="57">
-              <h1 class="h3 mb-3 fw-normal" > Video Meeting App </h1>
+        <img class="ms-image" src="images/microsoft.png" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal"> Video Meeting App </h1>
+        <div class="input-group mb-3">
+          <input id="takeUserName" type="text" class="form-control" placeholder="Enter your name" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button id="userNameInputButton" class="btn btn-outline-primary" type="submit" id="button-addon2">Set</button>
+          <p> You can leave Username blank to join as anonymous user</p>
+        </div>
         <form action="/:room" method="POST">
           <div class="form-floating">
             <div class="input-group mb-3">
-              <input type="text" name = "linkToJoin" class="form-control" placeholder=" Enter a code or link " aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input type="text" name="linkToJoin" class="form-control" placeholder=" Enter a code or link " aria-label="Recipient's username" aria-describedby="button-addon2">
               <button class="btn btn-outline-primary" type="submit" value="JoinViaLink" id="button-addon2">Join</button>
             </div>
           </div>
         </form>
-      <form  action="/" method="post">
-        <div class="link-to-start">
-          <button class="w-100 btn btn-lg btn-primary" name = "newMeeting" type = "input" value = "JoinNewMeeting"> Start a new meeting </button>
-        </div>
-      </form>
+        <form action="/" method="post">
+          <div class="link-to-start">
+            <button class="w-100 btn btn-lg btn-primary" name="newMeeting" type="input" value="JoinNewMeeting"> Start a new meeting </button>
+          </div>
+        </form>
     </main>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">

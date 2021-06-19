@@ -3,7 +3,7 @@ const videoGrid = document.getElementById('video-grid')
 myPeer = new Peer(undefined)
 const myVideo = document.createElement('video')
 myVideo.muted = true
-let user = prompt("Enter a UserName")
+var user = "Anonymous"
 const peers = {}
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
@@ -50,7 +50,7 @@ socket.on('user-disconnected', userId => {
 
 
 myPeer.on('open', id => {
-  socket.emit('join-room', ROOM_ID, id,user);
+  socket.emit('join-room', ROOM_ID, id, USER);
 });
 
 function connectToNewUser(userId, stream) {
