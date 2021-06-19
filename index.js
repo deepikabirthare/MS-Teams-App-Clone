@@ -2,14 +2,10 @@
 const express = require('express')
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server)
-
-// using uuid to generate unique room Ids for users
 const { v4: uuidv4 } = require('uuid');
-
 const bodyParser = require("body-parser");
-
 app.set('view engine', 'ejs');
+const io = require("socket.io")(server);
 app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -20,7 +16,7 @@ app.route('/')
   .post(function (req, res) {
     res.redirect(`/${uuidv4()}`);
   })
-user = "Anony"
+var user = "Anonymous"
 app.route('/:room')
    .get((req, res) => {
     res.render('room', {data : { roomId: req.params.room , userName: user}})
@@ -40,15 +36,17 @@ app.route('/:room')
     })
 io.on('connection', socket => {
   socket.on('send-user-name', userName => {
-  if(user !== null){
+  if(userName !== null){
     user = userName
+  }else{
+    user = "Anonymous"
   }
   })
- socket.on('join-room', (roomId, userId,user) => {
+ socket.on('join-room', (roomId, userId,usersName) => {
    socket.join(roomId)
    socket.broadcast.to(roomId).emit('user-connected', userId);
    socket.on('message', message => {
-     socket.broadcast.to(roomId).emit('createMessage', message, user);
+     socket.broadcast.to(roomId).emit('createMessage', message, usersName);
    })
 
    socket.on('disconnect', () =>{

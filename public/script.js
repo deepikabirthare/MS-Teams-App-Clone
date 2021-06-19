@@ -1,9 +1,8 @@
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
-myPeer = new Peer(undefined)
+var myPeer = new Peer(undefined)
 const myVideo = document.createElement('video')
 myVideo.muted = true
-var user = "Anonymous"
 const peers = {}
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
