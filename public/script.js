@@ -3,6 +3,7 @@ const videoGrid = document.getElementById('video-grid')
 myPeer = new Peer(undefined)
 const myVideo = document.createElement('video')
 myVideo.muted = true
+let user = prompt("Enter a UserName")
 const peers = {}
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
@@ -35,8 +36,8 @@ navigator.mediaDevices.getUserMedia({
       text.val('');
     }
   });
-  socket.on('createMessage', message => {
-    $('ul').append(`<li class="message"><b>User: </b>${message}</li>`);
+  socket.on('createMessage', (message, userName) => {
+    $('ul').append(`<li class="message"><b>${userName}: </b>${message}</li>`);
     scrollToBottom();
   });
 })
@@ -49,7 +50,7 @@ socket.on('user-disconnected', userId => {
 
 
 myPeer.on('open', id => {
-  socket.emit('join-room', ROOM_ID, id);
+  socket.emit('join-room', ROOM_ID, id,user);
 });
 
 function connectToNewUser(userId, stream) {
