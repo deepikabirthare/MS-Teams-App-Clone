@@ -44,6 +44,9 @@ io.on('connection', socket => {
    socket.join(roomId)
    socket.broadcast.to(roomId).emit('user-connected', userId);
    socket.on('message', message => {
+     if(userName === null){
+       userName = "Anonymous"
+     }
      socket.broadcast.to(roomId).emit('createMessage', message, userName);
    })
 

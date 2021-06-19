@@ -37,7 +37,7 @@ navigator.mediaDevices.getUserMedia({
     }
   });
   socket.on('createMessage', (message, userName) => {
-    $('ul').append(`<li class="message"><b>${userName === user ? user : "Anonymous"}: </b>${message}</li>`);
+    $('ul').append(`<li class="message"><b>${userName}: </b>${message}</li>`);
     scrollToBottom();
   });
 })
