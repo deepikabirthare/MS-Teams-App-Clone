@@ -1,11 +1,10 @@
-const socket = io('/');
+const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 var myPeer = new Peer(undefined, {
   host: "dbpeerjsserver.herokuapp.com",
   port: 443,
   secure: true
 });
-const user = prompt("Enter user name")
 const myVideo = document.createElement('video')
 myVideo.muted = true
 const peers = {}
@@ -40,8 +39,8 @@ navigator.mediaDevices.getUserMedia({
       text.val('');
     }
   });
-  socket.on('createMessage', (message,userName) => {
-    $('ul').append(`<li class="message"><b>${userName === null ?"Anonymous" : userName} : </b>${message}</li>`);
+  socket.on('createMessage', message => {
+    $('ul').append(`<li class="message"><b>User: </b>${message}</li>`);
     scrollToBottom();
   });
 })
@@ -52,8 +51,9 @@ socket.on('user-disconnected', userId => {
 });
 
 
+
 myPeer.on('open', id => {
-  socket.emit('join-room', ROOM_ID, id,user);
+  socket.emit('join-room', ROOM_ID, id);
 });
 
 function connectToNewUser(userId, stream) {
@@ -97,6 +97,7 @@ function copy(idCopied){
 const scrollToBottom = () => {
   var d = $('.main_chat_window');
   d.scrollTop(d.prop("scrollHeight"));
+  console.log("Hello");
 }
 
 
