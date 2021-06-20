@@ -15,10 +15,9 @@ app.route('/')
   .post(function (req, res) {
     res.redirect(`/${uuidv4()}`);
   })
-var user = "Anonymous"
 app.route('/:room')
    .get((req, res) => {
-    res.render('room', {data : { roomId: req.params.room , userName: user}})
+    res.render('room', { roomId: req.params.room })
     })
     .post((req,res) => {
       const linkToJoin = req.body.linkToJoin
@@ -34,13 +33,6 @@ app.route('/:room')
       res.redirect(`/${newString}`);
     })
 io.on('connection', socket => {
-  socket.on('send-user-name', userName => {
-  if(userName !== null){
-    user = userName
-  }else{
-    user = "Anonymous"
-  }
-  })
  socket.on('join-room', (roomId, userId,usersName) => {
    socket.join(roomId)
    socket.broadcast.to(roomId).emit('user-connected', userId);

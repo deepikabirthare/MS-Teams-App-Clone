@@ -5,6 +5,7 @@ var myPeer = new Peer(undefined, {
   port: 443,
   secure: true
 });
+const user = prompt("Enter user name or leave blank to chat as anonymous user");
 const myVideo = document.createElement('video')
 myVideo.muted = true
 const peers = {}
@@ -40,7 +41,7 @@ navigator.mediaDevices.getUserMedia({
     }
   });
   socket.on('createMessage', (message, userName) => {
-    $('ul').append(`<li class="message"><b>${userName}: </b>${message}</li>`);
+    $('ul').append(`<li class="message"><b>${(userName === null || userName === "") ? "Anonymous" : userName}: </b>${message}</li>`);
     scrollToBottom();
   });
 })
@@ -51,9 +52,8 @@ socket.on('user-disconnected', userId => {
 });
 
 
-
 myPeer.on('open', id => {
-  socket.emit('join-room', ROOM_ID, id, USER);
+  socket.emit('join-room', ROOM_ID, id,user);
 });
 
 function connectToNewUser(userId, stream) {
