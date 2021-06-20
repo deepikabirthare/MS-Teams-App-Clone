@@ -12,22 +12,22 @@ app.route('/')
   .get(function (req, res) {
       res.render("index");
   })
+  .post(function(req,res){
+    const linkToJoin = req.body.linkToJoin
+    var str = JSON.stringify(linkToJoin)
+    var newString = "";
+    var i;
+    for(i = 0; i<str.length; i++){
+     if(str[i] === '"' || str[i] === ' ')
+     continue;
+     else
+     newString = newString + str[i]
+    }
+    res.redirect(`/${newString}`);
+  })
 app.get('/startnewmeet', function (req, res) {
     res.redirect(`/${uuidv4()}`);
   })
-app.post('/joinvialink', (req,res) =>{
-  const linkToJoin = req.body.linkToJoin
-  var str = JSON.stringify(linkToJoin)
-  var newString = "";
-  var i;
-  for(i = 0; i<str.length; i++){
-   if(str[i] === '"' || str[i] === ' ')
-   continue;
-   else
-   newString = newString + str[i]
-  }
-  res.redirect(`/${newString}`);
-})
 app.route('/:room')
    .get((req, res) => {
     res.render('room', { roomId: req.params.room })
