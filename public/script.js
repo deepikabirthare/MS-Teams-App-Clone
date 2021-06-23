@@ -55,7 +55,7 @@ navigator.mediaDevices.getUserMedia({
   addVideoStream(myVideo, stream);
   myPeer.on('connection', (conn) => {
       conn.on('data', (myId) => {
-        tempId = myId; 
+        tempId = myId;
         peers[myId] = uCall;
         const video = document.createElement('video');
         video.setAttribute("id", myId);
@@ -73,7 +73,7 @@ navigator.mediaDevices.getUserMedia({
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream);
   })
-  
+
   // input value
   let text = $('input');
   // when press enter send message
@@ -197,21 +197,6 @@ const setMuteButton = () => {
   document.querySelector('.main_mute_button').innerHTML = html;
 }
 
-var copyButton = document.getElementById('copy-button')
-
-copyButton.addEventListener("click", () =>{
-  copy(ROOM_ID)
-})
-
-function copy(idCopied){
-  var input = document.createElement('input');
-  input.setAttribute('value', idCopied);
-  document.body.appendChild(input);
-  input.select();
-  var result = document.execCommand('copy');
-  document.body.removeChild(input);
-  alert("copied")
-}
 
 const setUnmuteButton = () => {
   const html = `
