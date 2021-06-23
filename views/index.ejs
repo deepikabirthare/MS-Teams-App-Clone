@@ -57,7 +57,7 @@
       <div class="link-to-join">
           <img class="ms-image" src="images/microsoft.png" alt="" width="72" height="57">
               <h1 class="h3 mb-3 fw-normal" > Video Meeting App </h1>
-        <form action="/" method="POST">
+        <form action="/meet" method="POST">
           <div class="form-floating">
             <div class="input-group mb-3">
               <input type="text" name = "linkToJoin" class="form-control" placeholder=" Enter a code or link " aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -66,7 +66,7 @@
           </div>
         </form>
         <div class="link-to-start">
-          <button class="w-100 btn btn-lg btn-primary" name = "newMeeting" type = "input" value = "JoinNewMeeting" onclick = "redirect()"> Start a new meeting </button>
+          <button class="w-100 btn btn-lg btn-primary" name = "newMeeting" type = "input" value = "JoinNewMeeting" onclick="redirect()"> Start a new meeting </button>
         </div>
     </main>
     <footer class="footer mt-auto py-3 bg-light">
@@ -76,7 +76,7 @@
     </footer>
     <script type="text/javascript">
       function redirect(){
-        window.location.href = '/meet'
+        window.location.href = '/meet';
       }
     </script>
 </body>

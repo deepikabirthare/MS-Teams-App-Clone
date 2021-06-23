@@ -13,35 +13,34 @@ app.route('/')
   .get(function (req, res) {
     res.render('index');
   })
-  .post(function(req, res) {
-    const linkToJoin = req.body.linkToJoin
-   var str = JSON.stringify(linkToJoin)
-   var newString = "";
-   var i;
-   for (i = 0; i < str.length; i++) {
-     if (str[i] === '"' || str[i] === ' ')
-       continue;
-     else
-       newString = newString + str[i];
-   }
-   res.redirect(`/${newString}`);
- });
-
-  app.get('/meet', (req,res)=>{
-      res.redirect(`/${uuidv4()}`);
-  });
-
-app.route('/:room')
+app.route('/meet')
+.get(function(req, res) {
+  res.redirect(`/meet/${uuidv4()}`);
+})
+.post(function(req, res) {
+  Id = req.body.linkToJoin;
+  var str = JSON.stringify(Id)
+  var roomId = "";
+  var i;
+  for(i = 0; i<str.length; i++){
+   if(str[i] === '"' || str[i] === ' ')
+   continue;
+   else
+   roomId = roomId + str[i]
+  }
+  res.redirect(`/meet/${roomId}`);
+})
+app.route('/meet/:room')
    .get((req, res) => {
     res.render('room', { roomId: req.params.room })
-  });
+    })
 
 io.on('connection', socket => {
  socket.on('join-room', (roomId, userId) => {
    socket.join(roomId)
    socket.broadcast.to(roomId).emit('user-connected', userId);
-   socket.on('message', message => {
-     socket.broadcast.to(roomId).emit('createMessage', message);
+   socket.on('message', (user, message) => {
+     socket.broadcast.to(roomId).emit('createMessage',user,  message);
    })
 
    socket.on('disconnect', () =>{
