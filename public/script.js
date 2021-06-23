@@ -55,7 +55,7 @@ navigator.mediaDevices.getUserMedia({
   addVideoStream(myVideo, stream);
   myPeer.on('connection', (conn) => {
       conn.on('data', (myId) => {
-        tempId = myId;
+        // tempId = myId;
         peers[myId] = uCall;
         const video = document.createElement('video');
         video.setAttribute("id", myId);
@@ -90,7 +90,6 @@ navigator.mediaDevices.getUserMedia({
     scrollToBottom();
   });
 })
-
 
 socket.on('user-disconnected', userId => {
   if (peers[userId])  {
