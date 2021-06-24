@@ -38,7 +38,21 @@ var myPeer = new Peer(undefined, {
   secure: true,
   config: configuration
 });
-var user = prompt("Enter user name")
+var user
+function getUserName(){
+  var box = bootbox.prompt({
+      closeButton: false,
+      title: "Enter your name or leave blank to chat as Anonymous user",
+      centerVertical: true,
+      callback: function(result){
+        user = result;
+      }
+  });
+  box.find('.modal-content').css({'background-color': '#F0D9E7'});
+  box.find('.modal-content').css({'color': '#1C1C20'});
+  box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
+  box.find(".btn-secondary").removeClass("btn-secondary").addClass("btn-outline-secondary");
+}
 if(user === "" || user === null || user === undefined)
   user = "Anonymous";
 const myVideo = document.createElement('video')
@@ -132,20 +146,22 @@ function addVideoStream(video, stream) {
 }
 
 
-var copyButton = document.getElementById('copy-button')
-
-copyButton.addEventListener("click", () =>{
-  copy(ROOM_ID)
-})
-
-function copy(idCopied){
+function copy(){
   var input = document.createElement('input');
-  input.setAttribute('value', idCopied);
+  input.setAttribute('value', ROOM_ID);
   document.body.appendChild(input);
   input.select();
   var result = document.execCommand('copy');
   document.body.removeChild(input);
-  alert("copied")
+  var box = bootbox.alert({
+      message: "Copied",
+      closeButton: false
+  });
+  box.find('.modal-content').css({'background-color': '#F0D9E7'});
+  box.find('.modal-content').css({'color': '#1C1C20'});
+  box.find('.modal-content').css({'font-weight': 'bolder'});
+  box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
+
 }
 
 const scrollToBottom = () => {
@@ -191,7 +207,7 @@ const disconnectUser = () => {
 const setMuteButton = () => {
   const html = `
     <i class="fas fa-microphone"></i>
-    <span>Mute</span>
+    <span>Mute</sapn>
   `
   document.querySelector('.main_mute_button').innerHTML = html;
 }
@@ -216,7 +232,7 @@ const setStopVideo = () => {
 const setPlayVideo = () => {
   const html = `
   <i class="stop fas fa-video-slash"></i>
-    <span>Play Video</span>
+    <span>Show Video</span>
   `
   document.querySelector('.main_video_button').innerHTML = html;
 }

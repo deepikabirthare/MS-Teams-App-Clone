@@ -24,6 +24,7 @@ video {
 .main_left{
   flex: 1;
   display: flex;
+    background-color:#37293B;
   flex-direction: column;
 }
 .main_right{
@@ -31,7 +32,6 @@ video {
 }
 .main_videos {
   flex-grow: 1;
-  background-color:#1C1C20;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,11 +40,16 @@ video {
 
 .main_controls{
   display: flex;
-  background-color: #293B5F;
-  color: #D2D2D2;
-  padding: 4px;
-  justify-content: space-between;
+  background-color: #1C1C20;
+   color: #A685E2;
+/* justify-content: space-between; */
+justify-content:center;
+text-align: center;
   font-family:  'Roboto Slab', serif;
+  width:40%;
+  position: relative;
+  left: 25rem;
+  border-radius: 20px;
 }
 
 .main_controls_block{
@@ -56,7 +61,7 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8px 10px;
+  padding: 0 5px;
   min-width: 80px;
   cursor: pointer;
 }
@@ -65,11 +70,17 @@ video {
   font-size: 24px;
 }
 .main_controls_button:hover{
-  background-color: #47597E;
+  background-color: #5F4C64;
   border-radius: 5px;
 }
 .leave_meeting{
-  color: #EB534B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 2px 0px 5px;
+  cursor: pointer;
+  color: #FB3640;
 }
 .main_right{
   display: flex;
@@ -102,19 +113,20 @@ video {
   flex-grow: 1;
   background-color: transparent;
   border: none;
-  color: #DBE6FD;
+  color: #FFF5FD;
 }
+
 #copy-button{
   display: flex;
   flex-direction: column;
-  background-color: #293B5F;
-  color: #D2D2D2;
+  background-color: transparent;
+  color: #A685E2;
   font-family:  'Roboto Slab', serif;
   border: none;
 }
 
 #copy-button:hover{
-  background-color: #47597E;
+  background-color: #5F4C64;
 }
 
 .unmute, .stop {
@@ -135,4 +147,14 @@ a:hover {
 
 a:active {
   text-decoration: none;
+}
+
+.floating-nav-bar{
+  position: sticky;
+  bottom: 5rem;
+  text-align: center;
+  justify-content: center;
+}
+span{
+  color: #FFF5FD;
 }

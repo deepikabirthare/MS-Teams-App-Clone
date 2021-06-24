@@ -28,7 +28,7 @@ body {
 }
 
 .top-part{
-  margin-left: 3rem;
+  padding-left: 3rem;
   font-family: sans-serif;
   font-weight: lighter;
   text-align: left;
@@ -66,6 +66,8 @@ p{
   color: #D3D3D3;
 } */
 .footer-copy-right{
+  display: flex;
+  flex-direction: column;
   position: absolute;
   width:100%;
   bottom: 0;
