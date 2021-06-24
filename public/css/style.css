@@ -40,7 +40,7 @@ video {
   background-color: #1C1C20;
    color: #F4F9F9;
 /* justify-content: space-between; */
-justify-content:center;
+justify-content:space-between;
 text-align: center;
   font-family:  'Roboto Slab', serif;
   width:40%;
