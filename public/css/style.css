@@ -27,9 +27,6 @@ video {
     background-color:#232323;
   flex-direction: column;
 }
-.main_right{
-  flex: 0.2;
-}
 .main_videos {
   flex-grow: 1;
   display: flex;
@@ -84,8 +81,9 @@ text-align: center;
 }
 .main_right{
   display: flex;
+  flex:0.2;
   flex-direction: column;
-  background-color: #242324;
+  background-color: #444444;
   border-left: 1px solid #3D3D42;
 }
 .main_header{
@@ -108,6 +106,7 @@ text-align: center;
 .main_message_container{
   padding: 22px 12px;
   display: flex;
+  background-color: #343A40
 }
 .main_message_container input {
   flex-grow: 1;
@@ -157,29 +156,4 @@ a:active {
 }
 span{
   color: #FFF5FD;
-}
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: red;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
 }
