@@ -46,18 +46,18 @@ function getUserName(){
       centerVertical: true,
       callback: function(result){
         user = result;
+        if(user === "" || user === null || user === undefined)
+          user = "Anonymous";
       }
   });
-  box.find('.modal-content').css({'background': 'rgba(68,68,68,0.5)'});
+  box.find('.modal-content').css({'background': 'rgba(43,43,43,0.4)'});
   box.find('.modal-header').css({'color': '#E8F0F2'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
   box.find(".btn-secondary").removeClass("btn-secondary").addClass("btn-outline-secondary");
-  box.find('input').css({'background-color': 'rgba(68,68,68,0.5)'})
+  box.find('input').css({'background-color': 'rgba(43,43,43,0.4)'})
   box.find('input').css({'color': '#E8F0F2'})
 
 }
-if(user === "" || user === null || user === undefined)
-  user = "Anonymous";
 const myVideo = document.createElement('video')
 myVideo.muted = true
 var peers = {}
@@ -160,7 +160,7 @@ function copy(){
       message: "Copied",
       closeButton: false,
   });
-  box.find('.modal-content').css({'background': 'rgba(68,68,68,0.5)'});
+  box.find('.modal-content').css({'background': 'rgba(43,43,43,0.4)'});
   box.find('.modal-content').css({'color': '#E8F0F2'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
   box.find('.modal-content').css({'width': '40%'});
