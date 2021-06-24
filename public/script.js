@@ -48,10 +48,13 @@ function getUserName(){
         user = result;
       }
   });
-  box.find('.modal-content').css({'background-color': '#FFEEDB'});
-  box.find('.modal-content').css({'color': '#1C1C20'});
+  box.find('.modal-content').css({'background': 'rgba(68,68,68,0.5)'});
+  box.find('.modal-header').css({'color': '#E8F0F2'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
   box.find(".btn-secondary").removeClass("btn-secondary").addClass("btn-outline-secondary");
+  box.find('input').css({'background-color': 'rgba(68,68,68,0.5)'})
+  box.find('input').css({'color': '#E8F0F2'})
+
 }
 if(user === "" || user === null || user === undefined)
   user = "Anonymous";
@@ -155,12 +158,14 @@ function copy(){
   document.body.removeChild(input);
   var box = bootbox.alert({
       message: "Copied",
-      closeButton: false
+      closeButton: false,
   });
-  box.find('.modal-content').css({'background-color': '#FFEEDB'});
-  box.find('.modal-content').css({'color': '#1C1C20'});
-  box.find('.modal-content').css({'font-weight': 'bolder'});
+  box.find('.modal-content').css({'background': 'rgba(68,68,68,0.5)'});
+  box.find('.modal-content').css({'color': '#E8F0F2'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
+  box.find('.modal-content').css({'width': '40%'});
+  box.find('.modal-body').css({'height': '20px'});
+  box.find('.modal-footer').css({'border-style': 'none'});
 
 }
 
