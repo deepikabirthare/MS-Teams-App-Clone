@@ -48,7 +48,7 @@ function getUserName(){
         user = result;
       }
   });
-  box.find('.modal-content').css({'background-color': '#F0D9E7'});
+  box.find('.modal-content').css({'background-color': '#FFEEDB'});
   box.find('.modal-content').css({'color': '#1C1C20'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
   box.find(".btn-secondary").removeClass("btn-secondary").addClass("btn-outline-secondary");
@@ -157,7 +157,7 @@ function copy(){
       message: "Copied",
       closeButton: false
   });
-  box.find('.modal-content').css({'background-color': '#F0D9E7'});
+  box.find('.modal-content').css({'background-color': '#FFEEDB'});
   box.find('.modal-content').css({'color': '#1C1C20'});
   box.find('.modal-content').css({'font-weight': 'bolder'});
   box.find(".btn-primary").removeClass("btn-primary").addClass("btn-outline-primary");
