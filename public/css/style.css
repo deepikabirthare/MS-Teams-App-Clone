@@ -76,6 +76,7 @@ text-align: center;
   border-radius: 5px;
 }
 .leave_meeting{
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,7 +84,7 @@ text-align: center;
   padding: 10px 0px 5px 2px;
   cursor: pointer;
   color: #FB3640;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .main_right{
   display: flex;

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> What-I-Learned</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-CodeArchitecture.html">
+                                CodeArchitecture
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-What-I-Learned.html">
+                                What-I-Learned
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar tutorials"
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-CodeArchitecture.html">CodeArchitecture</a></li><li><a href="tutorial-What-I-Learned.html">What-I-Learned</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Tutorial</p>
+                    <h1>What-I-Learned</h1>
+                </header>
+                <section>
+
+<article>
+    <h2>What I learned during my project?</h2>
+<p>In this section I am going to list some of the techinical and non-techinical
+information I learned.</p>
+<h3>1. Agile Methodology</h3>
+<p><strong>What is Agile Methodology</strong></p>
+<ul>
+<li>It is an iterative approach that is used to design complicated software.</li>
+<li>In this method, project teams are allowed to be more flexible</li>
+<li>ensure that the final product is fulfilling the customer’s requirements.</li>
+<li>It develops customer-centric products and delivers in shorter sprints.</li>
+</ul>
+<p>This is how I implemented the Agile Methodology in my project:</p>
+<ol>
+<li>Designed a structure of the clone interface.</li>
+<li>Build a application before the build phase started but it failed.
+Build the application again.</li>
+<li>Created the BeckEnd part and tested on local host.</li>
+<li>Came to know about flaws of using peerjs server, that's why hosted
+my own peerjs server</li>
+<li>deployed app on heroku server and tested with a friend</li>
+<li>Research on why the connection failed and how it can be established</li>
+<li>Got a solution: xirsys provides free turn server urls, thanks to xirsys.</li>
+<li>included the turn server. Deployed and tested again.</li>
+<li>This time it worked but it failed while testing with my mentor when I
+she was using her laptop. Came to know about the reason.
+<ul>
+<li>Here I want to mention some of the fixes if user1 is not
+able to get user2 video
+<ul>
+<li>
+<p>Try Connecting using Edge, as sometimes there is security issue with Chrome</p>
+</li>
+<li>
+<p>Try connecting using Phone as <strong>my mentors laptop was provided by Microsoft so was not supporting the app, as she told me it was compatible with MS Teams only</strong></p>
+</li>
+<li>
+<p>In all other normal cases the app would work fine.</p>
+</li>
+<li>
+<img src="Process.png" width="700" height="500">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2>2. Why actually turn servers issue occurs and why was peer to peer not working?</h2>
+<p>I think writing on this issue might help others as well who will try to deploy their
+their application without using services like <strong>Azure or AWS</strong>.</p>
+<p>The issue occurs due to following reasons when one tries to connect using webrtc:</p>
+<ul>
+<li>
+<p>Stun servers used in connection using webrtc are unable to get other user's video and audio when:</p>
+<ul>
+<li>firewall comes in between</li>
+<li>NAT comes in between</li>
+</ul>
+</li>
+<li>
+<p>Then turn servers comes to rescue, instead of direct peer to peer connection, turn servers establishes the conncetion by relaying the traffic themselves.</p>
+</li>
+<li>
+<p>Here is the situation described :</p>
+<ul>
+<li>
+<img  src = "PeerToPeer.jpeg" width= "700" height="700">
+</li>
+</ul>
+</li>
+</ul>
+<h2>3. How to write documentation using jsdocs?</h2>
+<ul>
+<li>
+<p>Documentation and Code Architecture is very important for any Project for other's to understand our project structure and code.</p>
+<ul>
+<li>I came to know about code architecture from my mentor and included it as well in the tutorial.</li>
+<li>Here are some of the things I struggled a lot to figure out, hope they might help others.</li>
+<li>We can host our documentation separately using github pages by hosting only the <strong>docs directory.</strong></li>
+<li>And we can deploy our application on Heroku along with the docs folder no need to remove it while deploying.</li>
+<li>Should not add docs in .gitignore otherwise they won't be hosted on github</li>
+</ul>
+</li>
+<li>
+<p><strong>How to include images in documentation</strong></p>
+<ul>
+<li>we can include static files in default template of jsdoc then use img tag to include images.</li>
+<li>It's available in the documentation of <strong>better-docs</strong></li>
+</ul>
+</li>
+</ul>
+<h2>4. Of course I learned a lot of new technologies!</h2>
+<ul>
+<li>since I had never build a beckend application before I learned:
+<ul>
+<li>react though I figured out I can build this project without using React</li>
+<li>beckend Development using nodejs and express</li>
+<li>how requests and response works</li>
+<li>how frontend actually interacts with beckend</li>
+<li>webrtc, socket.io and peerjs</li>
+<li>how turn and stun servers work</li>
+</ul>
+</li>
+</ul>
+<h2>5. Lastly here are the few non-technical things I learned:</h2>
+<ol>
+<li><strong>Just try it!</strong></li>
+</ol>
+<ul>
+<li>I had no plan of working on this project thinking that if I will work on it, then I would lose my time to study for internships coming in July.</li>
+<li>But then I realised if I am scared to take up the challenge then I must definitely try it once, I might fail but it's better than losing confidence due to  fear of failure.</li>
+<li>Just know why you are doing something.</li>
+</ul>
+<ol start="2">
+<li><strong>There is always a solution</strong></li>
+</ol>
+<ul>
+<li>When I encountered the turn server issue I spend two days searching for the solution but found nothing, but then one of my friend helped me in finding Xirsys Turn server</li>
+<li>And I also discovered about Microsoft Azure and Amazon's AWS free trial services that might have helped me.</li>
+<li>But finally the issue was solved.</li>
+</ul>
+<ol start="3">
+<li><strong>Design as if you are the consumer of the product</strong></li>
+</ol>
+<ul>
+<li>I designed the UI thinking how I would like to see it if I have to use it for video chat app.</li>
+<li>Keeping this in mind help us to design user friendly UI.</li>
+</ul>
+<ol start="4">
+<li><strong>The reason for not being able to incorporate chat feature fully in the app</strong></li>
+</ol>
+<ul>
+<li>As mentioned in the code architecture the chat feature works when the user is in the call and not after or before the call and it is yet to be implemented</li>
+<li>The reason I was not able to complete it was I had my exams from 12th July and I had to prepare.</li>
+</ul>
+<h2>That's all for this project.</h2>
+<h4>Thank You for reading till the end.</h4>
+</article>
+
+</section>
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>
